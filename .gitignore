@@ -1,0 +1,10 @@
+# Editor files
+*~
+*.asv
+*.swp
+
+# Python
+*.pyc
+
+# Bag files
+*.bag
