@@ -39,9 +39,11 @@ class PyBag:
         """Return the data from all messages in the bag as a nested dict"""
         data_dict = {}
         for topic, msg, t in self.bag.read_messages():
-            if not topic in data_dict:
-                data_dict[self.topic_to_field(topic)] = self.initialize_topic(msg)
-            self.extract_msg_data(msg, data_dict[self.topic_to_field(topic)])
+            field = self.topic_to_field(topic)
+            if not field in data_dict:
+                data_dict[field] = self.initialize_topic(msg)
+                print "Initialized topic %s" % topic
+            self.extract_msg_data(msg, data_dict[field])
         return data_dict
 
     def initialize_topic(self, msg):
